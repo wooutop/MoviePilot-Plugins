@@ -7,7 +7,9 @@ import http.cookies
 import datetime
 from diskcache import Cache
 
-import pkg_resources
+#import pkg_resources
+import os
+
 import requests
 from py_mini_racer import py_mini_racer
 from .help import api_list
@@ -38,7 +40,9 @@ class NeteaseCloudMusicApi:
                             "/login/refresh": self.login_refresh}
 
         # 载入js代码
-        resource_path = pkg_resources.resource_filename(__name__, 'NeteaseCloudMusicApi.js')
+#        resource_path = pkg_resources.resource_filename(__name__, 'NeteaseCloudMusicApi.js')
+        resource_path = os.path.join(os.path.dirname(__file__), 'NeteaseCloudMusicApi.js')
+
 
         with open(resource_path, 'r', encoding='utf-8') as file:
             js_code = file.read()
